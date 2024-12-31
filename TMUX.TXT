@@ -1,0 +1,17 @@
+TMUX
+ A new session is created using the new-session command - new for short:
+$ tmux new
+The default prefix key is C-b, which means the Ctrl key and b
+In tmux, modifier keys are shown by prefixing a key with 
+C- for the control key, 
+M- for the meta key (normally Alt on modern computers) and 
+S- for the shift key. 
+These may be combined together, so C-M-x means pressing the control key, meta key and x together.
+C-b c key binding which runs the new-window command. A new window can be created in an attached session with the 
+C-b p changes to the previous window in the window list by number.
+C-b % splits the current pane into two horizontally, producing two panes next to each other, one on the left and one on the right.
+C-b " splits the current pane into two vertically, producing two panes one above the other.
+C-b & prompts for confirmation then kills (closes) the current window. All panes in the window are killed at the same time. 
+C-b x kills only the active pane. These are bound to the kill-window and kill-pane commands.
+C-b [ This puts you in copy mode.
+
