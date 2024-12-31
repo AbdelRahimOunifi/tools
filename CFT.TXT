@@ -1,0 +1,88 @@
+Step 1: Discover Open Ports Quickly
+Use Nmap's TCP SYN scan (-sS) with a high-speed timing template (-T4 or -T5) to identify open ports without probing too deeply. For example:
+
+bash
+nmap -p- -T4 --min-rate=1000 -vv <target-ip> -oG quick_ports.txt
+grep "open" quick_ports.txt | awk '{print $2}' | paste -sd, - > ports.txt
+nmap -p $(cat ports.txt) -sC -sV -vv -oA detailed_scan <target-ip>
+
+What This Does:
+-p-: Scans all 65,535 ports.
+-T4: Adjusts scan speed for faster results (T5 is faster but riskier).
+--min-rate=1000: Ensures a minimum of 1,000 packets per second.
+-oG quick_ports.txt: Outputs results in a grepable format for parsing.
+Focuses the detailed scan (-sC -sV) 
+
+website enumeration
+/usr/lib/python3/dist-packages/dirsearch/dirsearch.py -u 10.10.112.72 --exclude-status 403,404
+gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt -u http://10.10.149.87 
+apache-user-enum-1.0.txt  
+directories.jbrofuzz    
+directory-list-2.3-medium.txt  
+directory-list-lowercase-2.3-medium.txt
+apache-user-enum-2.0.txt  
+directory-list-1.0.txt  
+directory-list-2.3-small.txt   
+directory-list-lowercase-2.3-small.txt
+
+hydra 
+hydra -v -V -u -l Mitch -P best110.txt -t 1 -u 10.10.112.72 -s 2222 ssh 
+hydra -L utilisateur.txt -P pass.txt 192.168.29.135 ssh -t 4
+hydra -l mitch -P pass.txt 192.168.29.135 ssh -t 4
+
+
+SSh 
+ssh mitch@10.10.149.87 -p 2222
+ssh -i rsa_id mitch@10.10.149.87 -p 2222
+
+Hashcat is a powerful and versatile password recovery tool that uses the GPU to perform fast password cracking
+Basic Syntax:
+bash
+hashcat -m <hash-type> -a <attack-mode> <hash-file> <wordlist>
+Examples:
+
+Dictionary Attack (MD5 hash):
+
+bash
+hashcat -m 0 -a 0 hashes.txt /path/to/wordlist.txt
+Brute-force Attack (MD5 hash):
+
+bash
+hashcat -m 0 -a 3 hashes.txt ?a?a?a?a
+?a: Represents all possible characters.
+Example: The above tries all 4-character combinations.
+Mask Attack (8 characters, uppercase + digits):
+
+bash
+hashcat -m 0 -a 3 hashes.txt ?u?u?u?u?d?d?d?d
+?u: Uppercase letters.
+?d: Digits.
+Hybrid Attack (dictionary + brute-force):
+
+bash
+hashcat -m 0 -a 6 hashes.txt /path/to/wordlist.txt ?d?d
+Appends two digits to each word in the wordlist.
+Crack NTLM Hash (Windows passwords):
+
+bash
+hashcat -m 1000 -a 0 ntlm_hashes.txt /path/to/wordlist.txt
+Stopping and Resuming:
+
+Pause a session: Press Ctrl+C, and Hashcat will save the session.
+Resume a session:
+bash
+hashcat --restore
+Benchmarking Hashcat:
+
+To test the speed for specific algorithms:
+bash
+hashcat -b
+Show Cracked Passwords:
+
+bash
+hashcat -m <hash-type> --show hashes.txt
+hashcat -O -a 0 -m 20 passwordhash:pass /usr/share/wordlists/rockyou.txt
+
+
+escalation
+https://gtfobins.github.io/

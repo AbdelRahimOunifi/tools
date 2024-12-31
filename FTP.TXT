@@ -1,0 +1,23 @@
+FTP
+port 21
+ftp IP 
+3. Commandes après connexion :
+ls : Liste les fichiers et dossiers sur le serveur.
+cd <répertoire> : Change de répertoire sur le serveur.
+get <fichier> : Télécharge un fichier du serveur vers le client.
+put <fichier> : Envoie un fichier du client vers le serveur.
+mget <fichiers> : Télécharge plusieurs fichiers.
+mput <fichiers> : Télécharge plusieurs fichiers.
+bye/quit : Ferme la session FTP.
+
+Script FTP de base :
+bash
+Copier le code
+ftp -n <<EOF
+open <adresse_ip>
+user <nom_utilisateur> <mot_de_passe>
+cd /chemin/serveur
+lcd /chemin/local
+get fichier.txt
+bye
+EOF

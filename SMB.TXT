@@ -1,0 +1,27 @@
+Networking
+SMB
+Port TCP 445, 137, 138, et 139 
+
+Enum4linux 
+Options principales
+-a : Exécute toutes les vérifications possibles. Combine plusieurs options comme -U, -S, -G, -P, etc.
+Exemple bash :
+
+enum4linux -a 192.168.1.10
+-U : Énumère les utilisateurs (User Enumeration). Utilise les appels RPC et RID cycling.
+-S : Énumère les partages SMB (Share Enumeration). Affiche les partages disponibles sur la machine cible.
+-G : Énumère les groupes (Group Enumeration).
+-P : Vérifie les mots de passe d'utilisateur vierges (Null Password Check).
+-o : Effectue des tests OS detection (détection du système d'exploitation de la cible).
+-h : Affiche l’aide (help).
+-v : Mode verbeux, affiche des détails supplémentaires sur l'exécution.
+-l : Recherche les informations des utilisateurs locaux.
+-d : Active le mode débogage pour plus de détails sur l'exécution.
+-n : Recherche des noms NetBIOS de la machine cible.
+Exemple complet bash :
+enum4linux -a -v 192.168.1.10
+
+connect to an SMB
+smbclient  //ip/share
+-U name : user
+-p port

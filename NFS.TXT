@@ -1,0 +1,5 @@
+NFS
+show list of mount
+/usr/sbin/showmount -e IP
+mounting nfs
+sudo mount -t nfs IP:SHARE /LOCATION -nolock

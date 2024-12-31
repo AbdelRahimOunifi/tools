@@ -1,0 +1,18 @@
+SMTP
+default port 25 (default), 587 (submission), or 465 (secure SMTP with SSL/TLS)
+
+HELO <domain> - Starts the conversation between the client and the SMTP server.
+EHLO <domain> - Extended version of HELO, lists the server's supported SMTP features (e.g., STARTTLS, AUTH).
+MAIL FROM:<sender@example.com> - Specifies the sender's email address.
+RCPT TO:<recipient@example.com> - Specifies the recipient's email address.
+DATA - Starts the process of sending the email body. End with a single period (.) on a new line.
+RSET - Resets the current session.
+QUIT - Ends the session with the server.
+VRFY <email_address> - Verifies if an email address exists on the server (often disabled for security reasons).
+NOOP - Sends a "no operation" command to keep the connection alive. Server responds with 250 OK.
+STARTTLS - Upgrades the connection to use encryption (TLS/SSL), if supported by the server.
+AUTH <method> - Authenticates the client using a specified method (e.g., LOGIN, PLAIN, CRAM-MD5).
+
+also user msfconsole below modules
+SMTP_version
+smtp_enum
