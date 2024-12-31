@@ -1,0 +1,16 @@
+DNS
+default port 53
+nslookup
+>server DNSIP
+>127.0.0.1
+>targetIP
+>nameDNS
+dnsrecon -h
+dnsrecon -r 127.0.0.0/24 -n DNSIP
+dnsrecon -r 127.0.1.0/24 -n DNSIP
+dnsrecon -r DNSSUBNET -n DNSIP
+dig axfr @DNSIP
+dig axfr zone @DNSIP
+
+update my DNS
+echo "nameserver DNSIP" >> /etc/resolv.conf
