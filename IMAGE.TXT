@@ -1,0 +1,13 @@
+IMAGE 
+
+exiftool  WindowsXP_1551719014755.jpg  //extract image information 
+
+
+steghide --info <filename> //to see if there is anything hidden in the file
+stegseek --seed [stegofile.j to see if there is anything hidden in the file
+
+steghide extract -sf meme_1559010886025.jpg pass.txt //to extract  hidden in the file
+
+
+stegseek meme_1559010886025.jpg pass.txt //bruteforce
+stegcracker meme_1559010886025.jpg //bruteforce

@@ -1,1 +1,72 @@
 MYSQL
+
+
+mysql -u root -p'mememe' -h localhost -P 3306 fuel_schema
+SHOW DATABASES;
+USE mysql;SHOW TABLES;
+mysql -u root -p'mememe' -h localhost -P 3306 -e "SHOW DATABASES;" fuel_schema
+
+
+Use the following command to connect:
+
+bash
+Copier le code
+mysql -u username -p -h host -P port database_name
+Replace:
+username with the database username.
+host with the database host (e.g., localhost).
+port with the port number (default is 3306).
+database_name with the name of the database.
+Example:
+
+bash
+Copier le code
+mysql -u root -p -h localhost -P 3306 my_database
+You’ll be prompted for the password. Enter it, and you’ll gain access to the MySQL shell.
+
+Step 4: Execute Queries
+Once connected, you can run SQL queries. For example:
+
+List Databases:
+sql
+Copier le code
+SHOW DATABASES;
+Use a Database:
+sql
+Copier le code
+USE database_name;
+List Tables:
+sql
+Copier le code
+SHOW TABLES;
+View Data:
+sql
+Copier le code
+SELECT * FROM table_name LIMIT 10;
+Step 5: Non-Interactive Query Execution
+If you want to execute a single query without entering the interactive shell:
+
+bash
+Copier le code
+mysql -u username -p -h host -P port -e "SQL_QUERY" database_name
+Example:
+
+bash
+Copier le code
+mysql -u root -p -h localhost -P 3306 -e "SELECT * FROM users LIMIT 10;" my_database
+Step 6: Access Without Credentials Prompt
+If you have all credentials and don’t want to be prompted, include the password in the command (be cautious with this!):
+
+bash
+Copier le code
+mysql -u username -p'password' -h host -P port database_name
+Example:
+
+bash
+Copier le code
+mysql -u root -p'supersecretpassword' -h localhost -P 3306 my_database
+
+
+
+
+mysql -u root -p'mememe' -h localhost -P 3306 -e "SHOW DATABASES;" fuel_schema

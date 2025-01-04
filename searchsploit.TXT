@@ -1,0 +1,5 @@
+searchsploit
+
+
+searchsploit fuel //look for modules to use
+searchsploit -m fuel.py php/webapps/50477.py // copy the found script  php/webapps/50477.py to local file fuel

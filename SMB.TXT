@@ -25,3 +25,5 @@ connect to an SMB
 smbclient  //ip/share
 -U name : user
 -p port
+
+
