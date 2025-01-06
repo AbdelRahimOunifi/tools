@@ -1,6 +1,6 @@
 NMAP
 
 nmap -sV -p- IP -oN quick_ports.txt <target-ip>
-grep "open" quick_ports.txt | awk '{print $2}' | paste -sd, - > ports.txt
+grep "open" quick_ports.txt | awk -F'/' '{print $1}' | paste -sd, > ports.txt
 sudo nmap -p $(cat ports.txt) -sC -sV -vv -O -oA detailed_scan <target-ip>
 nmap -p $(cat ports.txt) -A -oA scan_AGG <target-ip>

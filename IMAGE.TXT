@@ -8,6 +8,9 @@ stegseek --seed [stegofile.j to see if there is anything hidden in the file
 
 steghide extract -sf meme_1559010886025.jpg pass.txt //to extract  hidden in the file
 
+xxd thmcp.jpg | head  //image binary header
+hexeditor thmcp.jpg   //update the binary
 
-stegseek meme_1559010886025.jpg pass.txt //bruteforce
-stegcracker meme_1559010886025.jpg //bruteforce
+
+
+tegseek logo.png /usr/share/wordlists/rockyou.txt  //bruteforce
